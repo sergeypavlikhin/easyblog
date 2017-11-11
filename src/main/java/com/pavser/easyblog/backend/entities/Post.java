@@ -17,8 +17,8 @@ import java.util.Date;
 public class Post implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tips_id_seq")
-    @SequenceGenerator(name="tips_id_seq", sequenceName="tips_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posts_id_seq")
+    @SequenceGenerator(name="posts_id_seq", sequenceName="posts_id_seq", allocationSize=1)
     private Long id;
     @Column(name = "title")
     private String title;
