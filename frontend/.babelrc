@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-class-properties",
+    "transform-export-default",
+    ["lodash", { "id": ["lodash", "semantic-ui-react"] }]
+  ]
+}

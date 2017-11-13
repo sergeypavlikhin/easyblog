@@ -1,0 +1,32 @@
+{
+  "name": "easyblog",
+  "version": "0.0.9",
+  "description": "Simple frontend for you",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-helper-module-imports": "^7.0.0-beta.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-lodash": "^3.3.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-default": "^7.0.0-alpha.20",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "create-react-class": "^15.6.2",
+    "lodash-compat": "^3.10.2",
+    "lodash-es": "^4.17.4",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.76.0",
+    "webpack": "^3.8.1"
+  }
+}
