@@ -1,6 +1,6 @@
 package com.pavser.easyblog;
 
-import com.pavser.easyblog.backend.controllers.JsonUtils;
+import com.pavser.easyblog.backend.JsonUtils;
 import com.pavser.easyblog.backend.entities.Post;
 import org.junit.Assert;
 import org.junit.Test;

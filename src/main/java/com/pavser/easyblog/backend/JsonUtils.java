@@ -1,4 +1,4 @@
-package com.pavser.easyblog.backend.controllers;
+package com.pavser.easyblog.backend;
 
 import com.google.gson.Gson;
 

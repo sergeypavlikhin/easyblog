@@ -1,4 +1,4 @@
-package com.pavser.easyblog.backend;
+package com.pavser.easyblog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
