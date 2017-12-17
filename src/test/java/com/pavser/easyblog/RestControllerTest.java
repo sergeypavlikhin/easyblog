@@ -7,6 +7,13 @@ import com.pavser.easyblog.backend.services.PostServiceImpl;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,11 +24,22 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(PostsController.class)
 public class RestControllerTest {
 
+    @Autowired
+    private MockMvc mvc;
+
+    @MockBean
     private PostService postService;
-    private PostsController restController;
+
     private final List<Post> REPOSITORY = new ArrayList<>();
 
     private final static String TITLE_1 = "Title 1";
@@ -30,24 +48,23 @@ public class RestControllerTest {
 
     private final static String TITLE_NEW = "Title 4";
 
-    @Before
-    public void setup(){
+    @Test
+    public void getAllTest() throws Exception {
         REPOSITORY.clear();
         REPOSITORY.add(new Post(1L, TITLE_1, new Date(), "Description", "Simple body"));
         REPOSITORY.add(new Post(2L, TITLE_2, new Date(), "Description", "Simple body"));
         REPOSITORY.add(new Post(3L, TITLE_3, new Date(), "Description", "Simple body"));
 
-        postService = mock(PostService.class);
         when(postService.getAll(anyInt())).thenReturn(REPOSITORY);
 
-        restController = new PostsController();
-        restController.setPostService(postService);
-    }
-
-    @Test
-    public void getAllTest(){
-//        Post posts = restController.getById("2", "2");
-//        assertThat(posts, CoreMatchers.is(REPOSITORY));
+        mvc.perform(
+                get("/api/posts").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect(jsonPath("$[0].id", is(1)))
+                .andExpect(jsonPath("$[1].id", is(2)))
+                .andExpect(jsonPath("$[2].id", is(3)))
+        ;
     }
 
 }

@@ -1,10 +1,15 @@
 import React from 'react';
 import { Card as SemCard, Icon } from 'semantic-ui-react';
+import moment from 'moment';
 
 export class Card extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    handleRemove = (id) => {
+        this.props.removePost(id);
+    };
 
     render() {
         return (<SemCard fluid>
@@ -14,7 +19,7 @@ export class Card extends React.Component {
                         </SemCard.Header>
                         <SemCard.Meta>
                             <span className='date'>
-                                 {this.props.created}
+                                 { moment(this.props.date_created, "x").format("DD MMM YYYY") }
                             </span>
                         </SemCard.Meta>
                         <SemCard.Description>
@@ -22,9 +27,9 @@ export class Card extends React.Component {
                         </SemCard.Description>
                     </SemCard.Content>
                     <SemCard.Content extra>
-                        <a>
+                        <a onClick={() => this.handleRemove(this.props.id) }>
                             <Icon name='user' />
-                            22 Friends
+                            22 Cards
                         </a>
                     </SemCard.Content>
                 </SemCard>
