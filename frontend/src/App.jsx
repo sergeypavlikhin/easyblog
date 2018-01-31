@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Main} from './views/Main';
 import { data } from './middleware/Store';
+import { Router, Route, browserHistory } from 'react-router';
 
 import { combineReducers, createStore } from 'redux';
 import * as ActionTypes from './constants/ActionTypes';
